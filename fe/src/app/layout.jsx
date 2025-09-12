@@ -1,5 +1,7 @@
-
+import Footer from "../conponents/footer/footer";
+import Navbar from "../conponents/navbar/navbar";
 import "./globals.css";
+import { ThemeProvider } from "./providers";
 
 export const metadata = {
   title: "Vinson Portfolio",
@@ -9,11 +11,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-       className="bg-[#0f0f0f]"
-      >
-        {children}
-      </body>
+      <ThemeProvider>
+        
+        <body
+          className=""
+        >
+          <Navbar />
+          {children}
+           <Footer />
+        </body>
+       
+      </ThemeProvider>
     </html>
   );
 }

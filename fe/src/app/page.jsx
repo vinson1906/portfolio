@@ -1,6 +1,10 @@
 // import Ourprojects from "../conponents/projects/ourprojects";
 import dynamic from "next/dynamic";
 import SkillCollection from "../conponents/skills/skillCollection";
+import Certificates from "../conponents/certificates/certificates";
+import Skills from "../conponents/skills/skills";
+import Contact from "../conponents/contact-us/contact-us";
+import Experience from "../conponents/Experience/experience";
 const Hero = dynamic(() => import('../conponents/Herosection/Hero'))
 const About = dynamic(() => import('../conponents/Herosection/about-me'))
 const Ourprojects = dynamic(() => import('../conponents/projects/ourprojects'))
@@ -12,8 +16,13 @@ export default function Home() {
       <div>
         <Hero />
         <About />
-        <SkillCollection />
+        {/* <SkillCollection />
+         */}
+         <Experience />
+         <Skills />
         <Ourprojects />
+        <Certificates />
+        <Contact />
         {/* //ui designs banners figma
         //feedbacks
         //Contact
