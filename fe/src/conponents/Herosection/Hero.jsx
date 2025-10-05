@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowDown, Download, Mail } from 'lucide-react';
 import { gsap } from 'gsap';
+import { Typewriter } from 'react-simple-typewriter';
 
 const Hero = () => {
   const heroRef = useRef(null);
@@ -70,8 +71,15 @@ const Hero = () => {
           ref={titleRef}
           className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6"
         >
-          <span className="text-purple-600 dark:text-purple-400">Joseph Vinson</span><br />
-          Samuel M
+          <span className="text-purple-600 dark:text-purple-400">
+            <Typewriter
+              words={["Heyy! , Hii there I'm ",'Joseph Vinson Samuel M', 'a Software Developer ','UI/UX Designer']}
+              loop={false}
+              typeSpeed={80}
+              deleteSpeed={80}
+              delaySpeed={2000}
+            />
+          </span>
         </h1>
 
         <p
