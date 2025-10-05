@@ -1,153 +1,126 @@
 'use client'
-import Image from 'next/image';
-import React, { useEffect, useRef } from 'react'
-import gsap from 'gsap';
-import vinsonImage from '@/../public/assets/vinson.jpg'
-import Sanjay from "@/../public/assets/404pagenot found.png"
+import React, { useEffect, useRef } from 'react';
+import { ArrowDown, Download, Mail } from 'lucide-react';
+import { gsap } from 'gsap';
+import { Typewriter } from 'react-simple-typewriter';
 
 const Hero = () => {
-  const navbarRef = useRef(null);
-  const profileImageRef = useRef(null);
-  const contentRef = useRef(null);
+  const heroRef = useRef(null);
+  const titleRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const taglineRef = useRef(null);
+  const buttonsRef = useRef(null);
 
   useEffect(() => {
-    const timeline = gsap.timeline();
-    gsap.set(navbarRef.current, { y: -100, opacity: 0 });
-    gsap.set(profileImageRef.current, { x: -200, opacity: 0 });
-    gsap.set(contentRef.current, { x: 200, opacity: 0 });
+    if (!titleRef.current || !subtitleRef.current || !taglineRef.current || !buttonsRef.current) return;
 
-    timeline.to(navbarRef.current, {
-      y: 0,
-      opacity: 1,
+    const tl = gsap.timeline({ delay: 0.5 });
+
+    tl.from(titleRef.current, {
       duration: 1,
+      y: 100,
+      opacity: 0,
       ease: "power3.out"
-    });
-
-    timeline.to(profileImageRef.current, {
-      x: 0,
-      opacity: 1,
-      duration: 1.2,
-      ease: "power3.out"
-    }, "-=0.5");
-
-    timeline.to(contentRef.current, {
-      x: 0,
-      opacity: 1,
-      duration: 1.2,
-      ease: "power3.out"
-    }, "-=0.8");
-
+    })
+      .from(subtitleRef.current, {
+        duration: 0.8,
+        y: 50,
+        opacity: 0,
+        ease: "power3.out"
+      }, "-=0.5")
+      .from(taglineRef.current, {
+        duration: 0.8,
+        y: 30,
+        opacity: 0,
+        ease: "power3.out"
+      }, "-=0.4")
+      .from(Array.from(buttonsRef.current.children), {
+        duration: 0.6,
+        y: 30,
+        opacity: 0,
+        stagger: 0.2,
+        ease: "power3.out"
+      }, "-=0.3");
   }, []);
+
+  const scrollToProjects = () => {
+    const element = document.getElementById('projects');
+    if (element) {
+      gsap.to(window, { duration: 1, scrollTo: element, ease: "power2.inOut" });
+    }
+  };
+
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      gsap.to(window, { duration: 1, scrollTo: element, ease: "power2.inOut" });
+    }
+  };
+
   return (
-    <>
-      <div className="min-h-screen bg-[#0f0f0f] text-white overflow-hidden">
-        <nav
-          ref={navbarRef}
-          className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-b border-gray-800"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center py-4">
-              <div className="text-2xl font-bold text-white">
-                vinson Jose
-              </div>
-              <div className="hidden md:flex space-x-8">
-                <a href="#about" className="text-gray-300 hover:text-white transition-colors duration-300">
-                  About
-                </a>
-                <a href="#skills" className="text-gray-300 hover:text-white transition-colors duration-300">
-                  skills
-                </a>
-                <a href="#project" className="text-gray-300 hover:text-white transition-colors duration-300">
-                  Projects
-                </a>
-                <a href='#contact' className="bg-purple-600 hover:bg-purple-700 px-6 py-2 rounded-lg transition-colors duration-300">
-                  Contact
-                </a>
-              </div>
+    <section id="home" ref={heroRef} className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-white dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
 
-              <button className="md:hidden text-white">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </nav>
-
-        <main className="pt-20 min-h-screen flex items-center">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-
-              <div ref={profileImageRef} className="relative order-2 lg:order-1">
-                <div className="relative w-full max-w-md mx-auto lg:mx-0">
-                  <div className="aspect-[3/4] bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden relative">
-                    <Image
-                      src={vinsonImage}
-                      alt="Robin Williams - Product Designer"
-                      width={200}
-                      height={200}
-                      className="object-cover w-full h-full"
-                      priority
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                  </div>
-                </div>
-              </div>
-
-
-              <div ref={contentRef} className="order-1 lg:order-2 text-center lg:text-left">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6">
-                  I'm{' '}
-                  <span className="text-purple-600">Joseph Vinson Samuel.</span>
-                  <br />
-                  <span className="text-white">A FullStack Developer</span>
-                  <br />
-                  <span className="text-gray-500">Ui Designer.</span>
-                </h1>
-
-                <p className="text-lg sm:text-xl text-gray-400 leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-8">
-                  I’m the web developer who turns ideas into sleek,
-                  functional experiences. Got a big idea? Let’s build it.
-                </p>
-
-                {/* Call to Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                  <button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105">
-                    Get In Touch
-                  </button>
-                  <button className="border border-gray-600 hover:border-gray-400 text-gray-300 hover:text-white px-8 py-3 rounded-lg font-medium transition-all duration-300">
-                    View My Work
-                  </button>
-                </div>
-
-                {/* Stats or Social Links */}
-                {/* <div className="flex justify-center lg:justify-start space-x-8 mt-12">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-white">4+</div>
-                    <div className="text-gray-400 text-sm">Projects</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-white">+</div>
-                    <div className="text-gray-400 text-sm">Years Exp.</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-white">25+</div>
-                    <div className="text-gray-400 text-sm">Happy Clients</div>
-                  </div>
-                </div> */}
-              </div>
-            </div>
-          </div>
-
-          {/* Background Decoration */}
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-purple-900/10 to-transparent pointer-events-none"></div>
-          <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-r from-blue-900/5 to-transparent pointer-events-none"></div>
-        </main>
+      <div className="absolute inset-0 opacity-5 dark:opacity-10">
+        <div className="absolute top-20 left-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
+        <div className="absolute -bottom-8 left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-2000"></div>
       </div>
 
-    </>
-  )
-}
+      <div className="text-center z-10 px-4 max-w-4xl mx-auto">
+        <h1
+          ref={titleRef}
+          className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6"
+        >
+          <span className="text-purple-600 dark:text-purple-400">
+            <Typewriter
+              words={["Heyy! , Hii there I'm ",'Joseph Vinson Samuel M', 'a Software Developer ','UI/UX Designer']}
+              loop={false}
+              typeSpeed={80}
+              deleteSpeed={80}
+              delaySpeed={2000}
+            />
+          </span>
+        </h1>
+
+        <p
+          ref={subtitleRef}
+          className="text-2xl md:text-3xl font-medium text-gray-700 dark:text-gray-300 mb-4"
+        >
+          Full-Stack Software Developer
+        </p>
+
+        <p
+          ref={taglineRef}
+          className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed"
+        >
+          Building scalable, responsive, and modern web applications with cutting-edge technologies
+        </p>
+
+        <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <button
+            onClick={scrollToProjects}
+            className="group px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center gap-2"
+          >
+            View Projects
+            <ArrowDown size={20} className="group-hover:translate-y-1 transition-transform" />
+          </button>
+
+          <button
+            onClick={scrollToContact}
+            className="group px-8 py-4 border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white dark:text-purple-400 dark:hover:text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center gap-2"
+          >
+            Contact Me
+            <Mail size={20} className="group-hover:rotate-12 transition-transform" />
+          </button>
+        </div>
+      </div>
+
+
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <ArrowDown size={24} className="text-purple-600 dark:text-purple-400" />
+      </div>
+    </section>
+  );
+};
 
 export default Hero;
-
