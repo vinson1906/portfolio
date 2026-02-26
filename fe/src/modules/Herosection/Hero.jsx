@@ -56,7 +56,7 @@ const Hero = () => {
         end: "+=1000",
         scrub: 2,
         // pin: true,
-        markers: true
+        // markers: true
       }
     });
 
