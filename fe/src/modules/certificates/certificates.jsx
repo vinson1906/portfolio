@@ -58,7 +58,7 @@ const Certificates = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                        Certificates & <span className="text-purple-600 dark:text-purple-400">Achievements</span>
+                        Certificates & <span className="text-[#6BF216] dark:text-[#6BF216]">Achievements</span>
                     </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
                         Continuous learning and professional development through recognized certifications
@@ -81,17 +81,17 @@ const Certificates = () => {
 
                             {/* Certificate Content */}
                             <div className="p-6">
-                                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
+                                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-[#6BF216] dark:group-hover:text-[#6BF216] transition-colors duration-300">
                                     {certificate.title}
                                 </h3>
 
                                 <div className="flex items-center gap-4 text-gray-600 dark:text-gray-300 mb-4">
                                     <div className="flex items-center gap-1">
-                                        <Award className="w-4 h-4 text-purple-600" />
+                                        <Award className="w-4 h-4 text-[#6BF216]" />
                                         <span className="font-medium">{certificate.provider}</span>
                                     </div>
                                     <div className="flex items-center gap-1">
-                                        <Calendar className="w-4 h-4 text-purple-600" />
+                                        <Calendar className="w-4 h-4 text-[#6BF216]" />
                                         <span>{certificate.date}</span>
                                     </div>
                                 </div>
@@ -118,7 +118,7 @@ const Certificates = () => {
                                 </div>
 
                                 {/* View Certificate Button */}
-                                <button className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105">
+                                <button className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#6BF216] hover:bg-[#6BF216] text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105">
                                     <ExternalLink size={16} />
                                     View Certificate
                                 </button>
@@ -141,7 +141,7 @@ const Certificates = () => {
                             {["React Advanced Patterns", "Cloud Computing", "DevOps", "System Design"].map((topic, index) => (
                                 <span
                                     key={index}
-                                    className="px-4 py-2 bg-white dark:bg-gray-800 text-purple-600 dark:text-purple-400 rounded-full font-medium shadow-sm"
+                                    className="px-4 py-2 bg-white dark:bg-gray-800  rounded-full font-medium shadow-sm"
                                 >
                                     {topic}
                                 </span>

@@ -11,47 +11,6 @@ const About  = () => {
   const contentRef = useRef(null);
   const skillsRef = useRef(null);
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    const content = contentRef.current;
-    const skills = skillsRef.current;
-
-    if (section && content && skills) {
-      gsap.fromTo(content, 
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1, 
-          y: 0, 
-          duration: 1, 
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse"
-          }
-        }
-      );
-
-      gsap.fromTo(skills.children, 
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1, 
-          y: 0, 
-          duration: 0.8, 
-          stagger: 0.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: skills,
-            start: "top 85%",
-            end: "bottom 15%",
-            toggleActions: "play none none reverse"
-          }
-        }
-      );
-    }
-  }, []);
-
   const highlights = [
     {
       icon: <Code className="w-8 h-8" />,
@@ -80,7 +39,7 @@ const About  = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={contentRef} className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            About <span className="text-purple-600 dark:text-purple-400">Me</span>
+            About <span className="text-[#6BF216] dark:text-[#6BF216]">Me</span>
           </h2>
           <div className="max-w-4xl mx-auto">
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
@@ -100,7 +59,7 @@ const About  = () => {
         <div ref={skillsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {highlights.map((highlight, index) => (
             <div key={index} className="group p-6 bg-gray-50 dark:bg-gray-700 rounded-xl hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all duration-300 hover:shadow-lg hover:transform hover:scale-105">
-              <div className="text-purple-600 dark:text-purple-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-[#6BF216] dark:text-[#6BF216] mb-4 group-hover:scale-110 transition-transform duration-300">
                 {highlight.icon}
               </div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">

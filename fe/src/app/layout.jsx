@@ -1,5 +1,5 @@
-import Footer from "../conponents/footer/footer";
-import Navbar from "../conponents/navbar/navbar";
+import Footer from "../modules/footer/footer";
+import Navbar from "../components/Navbar/navbar";
 import "./globals.css";
 import { ThemeProvider } from "./providers";
 
@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
         >
           <Navbar />
           {children}
-           <Footer />
+           {/* <Footer /> */}
         </body>
        
       </ThemeProvider>
