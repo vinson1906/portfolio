@@ -19,7 +19,6 @@ function ProjectCard({ project }) {
                     duration: 0.2,
                     rotationY: 5,
                     rotationX: 10,
-                    scale: 1.05,
                     ease: "power2.out"
                 });
             }}
@@ -28,7 +27,6 @@ function ProjectCard({ project }) {
                     duration: 0.3,
                     rotationY: 0,
                     rotationX: 0,
-                    scale: 1,
                     ease: "power2.out"
                 });
             }}
