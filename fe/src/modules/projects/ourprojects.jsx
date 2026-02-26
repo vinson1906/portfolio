@@ -61,7 +61,7 @@ const Projects = () => {
         x: finalPosition[i].x,
         y: finalPosition[i].y,
         rotation: finalPosition[i].rotation,
-        scale: 1,
+        scale: 0.8,
         ease: "power4.out.in",
         duration: 0.5
       }, i * 0.3);
