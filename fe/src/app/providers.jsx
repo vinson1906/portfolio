@@ -6,12 +6,12 @@ const ThemeContext = createContext(undefined);
 
 export const ThemeProvider = ({ children }) => {
   const [isDark, setIsDark] = useState(() => {
-    const saved = localStorage.getItem('theme');
-    return saved ? JSON.parse(saved) : false;
+    const saved = ''
+    return saved ? JSON.parse(saved) : true;
   });
 
   useEffect(() => {
-    localStorage.setItem('theme', JSON.stringify(isDark));
+    
     if (isDark) {
       document.documentElement.classList.add('dark');
     } else {

@@ -1,25 +1,31 @@
 // import Ourprojects from "../conponents/projects/ourprojects";
 import dynamic from "next/dynamic";
-import SkillCollection from "../conponents/skills/skillCollection";
-import Certificates from "../conponents/certificates/certificates";
-import Skills from "../conponents/skills/skills";
-import Contact from "../conponents/contact-us/contact-us";
-import Experience from "../conponents/Experience/experience";
-const Hero = dynamic(() => import('../conponents/Herosection/Hero'))
-const About = dynamic(() => import('../conponents/Herosection/about-me'))
-const Ourprojects = dynamic(() => import('../conponents/projects/ourprojects'))
-// const Skills = dynamic(() => import('../conponents/skills/skills'))
+import SkillCollection from "../modules/skills/skillCollection";
+import Certificates from "../modules/certificates/certificates";
+import Skills from "../modules/skills/skills";
+import Contact from "../modules/contact-us/contact-us";
+import Experience from "../modules/Experience/experience";
+const Hero = dynamic(() => import('../modules/Herosection/Hero'))
+const About = dynamic(() => import('../modules/Herosection/about-me'))
+const Ourprojects = dynamic(() => import('../modules/projects/ourprojects'))
+
+import { SideBarLinks } from "../modules/sidebar/sidebar";
+// const Skills = dynamic(() => import('../modules/skills/skills'))
 
 export default function Home() {
   return (
     <>
       <div>
+        <div className="fixed bottom-0 top-72 left-20 min-h-screen z-50">
+          
+          {/* <SideBarLinks /> */}
+        </div>
         <Hero />
         <About />
         {/* <SkillCollection />
          */}
-         <Experience />
-         <Skills />
+        <Experience />
+        <Skills />
         <Ourprojects />
         <Certificates />
         <Contact />

@@ -31,15 +31,15 @@ const Contact = () => {
         }
       });
 
-      tl.fromTo(contactInfo, 
+      tl.fromTo(contactInfo,
         { opacity: 0, x: -50 },
         { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" }
       )
-      .fromTo(form, 
-        { opacity: 0, x: 50 },
-        { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" },
-        "-=0.4"
-      );
+        .fromTo(form,
+          { opacity: 0, x: 50 },
+          { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" },
+          "-=0.4"
+        );
     }
   }, []);
 
@@ -50,11 +50,28 @@ const Contact = () => {
     });
   };
 
+  const sendEmail = async (data) => {
+    try {
+      await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+    }
+    catch (err) {
+      console.error("Error:", err)
+    }
+
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-   
+
     console.log('Form submitted:', formData);
-    
+    sendEmail(formData)
+
     setFormData({ name: '', email: '', message: '' });
   };
 
@@ -67,9 +84,9 @@ const Contact = () => {
     },
     {
       icon: <Linkedin className="w-5 h-5" />,
-      label: "LinkedIn", 
+      label: "LinkedIn",
       value: "joseph-vinson-samuel-m",
-      link: "https://linkedin.com/in/joseph-vinson-samuel-m-710578377"
+      link: "https://linkedin.com/in/joseph-vinson-samuel/"
     },
     {
       icon: <Github className="w-5 h-5" />,
@@ -90,7 +107,7 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Let's <span className="text-purple-600 dark:text-purple-400">Connect</span>
+            Let's <span className="text-[#6BF216] dark:text-[#6BF216]">Connect</span>
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Ready to collaborate on your next project? Let's discuss how we can bring your ideas to life.
@@ -104,8 +121,8 @@ const Contact = () => {
                 Get in Touch
               </h3>
               <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                I'm always open to discussing new opportunities, interesting projects, 
-                or just having a conversation about technology and development. 
+                I'm always open to discussing new opportunities, interesting projects,
+                or just having a conversation about technology and development.
                 Feel free to reach out through any of the channels below.
               </p>
             </div>
@@ -116,7 +133,7 @@ const Contact = () => {
                   key={index}
                   className="group flex items-center gap-4 p-4 bg-white dark:bg-gray-700 rounded-xl hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all duration-300 hover:shadow-md"
                 >
-                  <div className="flex-shrink-0 p-3 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                  <div className="flex-shrink-0 p-3 bg-purple-100 dark:bg-purple-900/30  rounded-lg group-hover:scale-110 transition-transform duration-300">
                     {detail.icon}
                   </div>
                   <div>
@@ -124,11 +141,11 @@ const Contact = () => {
                       {detail.label}
                     </p>
                     {detail.link ? (
-                      <a 
+                      <a
                         href={detail.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-300 font-medium"
+                        className="text-gray-900 dark:text-white hover:text-[#6BF216] dark:hover:text-[#6BF216] transition-colors duration-300 font-medium"
                       >
                         {detail.value}
                       </a>
@@ -142,28 +159,28 @@ const Contact = () => {
               ))}
             </div>
 
-            
-            <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl p-6 text-white">
+
+            <div className="bg-gradient-to-r from-[#6BF216] to-blue-600 rounded-2xl p-6 text-white">
               <h4 className="text-lg font-bold mb-2">Quick Response</h4>
               <p className="text-purple-100 mb-4">
                 Looking for immediate assistance? I typically respond to emails within 24 hours.
               </p>
-              <a 
+              <a
                 href="mailto:josephvinson0305@gmail.com"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-white text-purple-600 rounded-lg font-medium hover:bg-purple-50 transition-colors duration-300"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white text-[#6BF216] rounded-lg font-medium hover:bg-purple-50 transition-colors duration-300"
               >
                 <Mail size={16} />
                 Send Quick Email
               </a>
             </div>
           </div>
-        
+
           <div>
             <form ref={formRef} onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                 Send a Message
               </h3>
-              
+
               <div className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -176,7 +193,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#6BF216] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300"
                     placeholder="Enter your full name"
                   />
                 </div>
@@ -192,7 +209,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#6BF216] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300"
                     placeholder="Enter your email address"
                   />
                 </div>
@@ -208,14 +225,14 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#6BF216] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300 resize-none"
                     placeholder="Tell me about your project or just say hello..."
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full group bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
+                  className="w-full group bg-[#6BF216] hover:bg-[#6BF216] text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
                 >
                   <Send size={18} className="group-hover:translate-x-1 transition-transform" />
                   Send Message
