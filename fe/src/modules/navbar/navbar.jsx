@@ -80,7 +80,7 @@ const Navbar = () => {
           </div>
         </div>
 
-       
+
         {isMenuOpen && (
           <div className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
             <div className="py-4 space-y-2">

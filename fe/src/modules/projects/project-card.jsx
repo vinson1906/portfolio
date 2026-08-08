@@ -89,7 +89,6 @@ function ProjectCard({ project }) {
                             Code
                         </Link>
 
-               
                     
                         <Link
                             href={project?.links?.host || "#"}

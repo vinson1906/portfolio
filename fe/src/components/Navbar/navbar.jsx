@@ -9,6 +9,14 @@ import { useGSAP } from '@gsap/react'
 import vinsonImage from '../../../public/assets/vinson.jpg'
 import Image from 'next/image'
 
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+gsap.registerPlugin(ScrollToPlugin)
+
+const scrollToProject = (e) => {
+  e.preventDefault()
+  gsap.to(window, { duration: 1.2, scrollTo: { y: '#project', offsetY: 80 }, ease: 'power3.inOut' })
+}
+
 
 function Navbar() {
 
@@ -18,12 +26,8 @@ function Navbar() {
             lable: "Home"
         },
         {
-            path: "/project",
+            path: "#project",
             lable: "Project"
-        },
-        {
-            path: "/contact",
-            lable: "Contact"
         },
         {
             path: "/blog",
@@ -70,7 +74,7 @@ function Navbar() {
 
     return (
         <div className='menu-container text-black font-serif ' ref={container}>
-            <div className="menu-bar fixed top-0 left-0 w-[100vw] p-[2em] flex justify-between items-center z-10">
+            <div className="menu-bar fixed top-0 left-0 w-[100vw] p-6 md:p-[2em] flex justify-between items-center z-10">
                 <div className="menu-logo">
                     <Link href="/" className=' cursor-pointer text-white'>Vinson</Link>
                 </div>
@@ -78,37 +82,35 @@ function Navbar() {
                     <p className=' cursor-pointer text-white'>Menu</p>
                 </div>
             </div>
-            <div className="menu-overlay fixed top-0 left-0 w-[100vw] h-[100vh] p-[2em] bg-[#c5fb45] z-20 flex justify-between items-center [clip-path:polygon(0%_0%,_100%_0%,_100%_0%,_0%_0%)]">
+            <div className="menu-overlay fixed top-0 left-0 w-[100vw] h-[100vh] p-6 md:p-[2em] bg-[#c5fb45] z-20 flex flex-col md:flex-row justify-between items-stretch overflow-y-auto [clip-path:polygon(0%_0%,_100%_0%,_100%_0%,_0%_0%)]">
 
-                <div className="menu-overlay-bar  flex flex-col justify-between items-start h-full">
-                    <div className="menu-logo h-full">
-                        <Link href="/" className='font-bold uppercase '>LOGO</Link>
+                <div className="menu-overlay-bar flex flex-row md:flex-col justify-between items-center md:items-start w-full md:w-auto md:h-full">
+                    <div className="menu-logo">
+                        <Link href="/" className='font-bold uppercase '>Welcome Buddy!</Link>
                     </div>
-                    <div className="menu-close flex-[4] h-full" onClick={toggleMenu}>
-                        <p className='text-6xl font-bold pl-4 cursor-pointer'>&#x2715;</p>
+                    <div className="menu-close md:flex-[4] flex md:h-full items-start" onClick={toggleMenu}>
+                        <p className='text-4xl md:text-6xl font-bold md:pl-4 cursor-pointer'>&#x2715;</p>
                     </div>
                 </div>
-                <div className='flex-[2]'></div>
+                <div className='hidden md:block md:flex-[2]'></div>
 
-                <div className="menu-copy flex-[4] flex flex-col h-full  pt-[2em]">
-                    <div className="menu-links flex flex-col h-full justify-center ">
+                <div className="menu-copy flex-1 md:flex-[4] flex flex-col md:h-full pt-8 md:pt-[2em]">
+                    <div className="menu-links flex flex-col flex-1 md:h-full justify-center">
                         {
                             menuLink.map((link, i) => (
                                 <div className="menu-link-item" key={i}>
                                     <div className="menu-link-item-holder " onClick={toggleMenu}>
-                                        <Link href={link.path} className='menu-link text-7xl '>{link.lable}</Link>
+                                        <a onClick={link.path == '#project' ? scrollToProject : '' } href={link.path} className='menu-link text-4xl sm:text-5xl md:text-7xl'>{link.lable}</a>
                                     </div>
                                 </div>
                             ))
                         }
                     </div>
-                    <div className="menu-info flex h-40% items-end gap-40 ">
-                        <div className="menu-info-colo flex-col">
-                            <a href="#" className='block hover:underline cursor-pointer'>X &#8599;</a>
-                            <a href="#" className='block hover:underline cursor-pointer'>Instagram &#8599;</a>
-                            <a href="#" className='block hover:underline cursor-pointer'> LinkedIn &#8599;</a>
-                            <a href="#" className='block hover:underline cursor-pointer'>Behance &#8599;</a>
-                            <a href="#" className='block hover:underline cursor-pointer'>GitHub &#8599;</a>
+                    <div className="menu-info flex flex-col sm:flex-row items-start h-auto md:h-40% md:items-end gap-6 sm:gap-16 md:gap-40 pb-8 md:pb-0">
+                        <div className="menu-info-colo flex flex-col">
+                            <a href="https://www.instagram.com/its.__.vinson/" target='_blank' className='block hover:underline cursor-pointer'>Instagram &#8599;</a>
+                            <a href="https://www.linkedin.com/in/joseph-vinson-samuel/" target='_blank' className='block hover:underline cursor-pointer'> LinkedIn &#8599;</a>
+                            <a href="https://github.com/vinson1906" target='_blank' className='block hover:underline cursor-pointer'>GitHub &#8599;</a>
                         </div>
                         <div className="menu-info-colo font-mono">
                             <p>josephvinson0305@gmail.com</p>
@@ -116,7 +118,9 @@ function Navbar() {
                         </div>
                     </div>
                 </div>
-                <div className="menu-preview flex-[2] flex flex-col  items-end h-full gap-2 ">
+
+                {/* Image + quote: hidden on mobile, visible from md breakpoint up */}
+                <div className="menu-preview hidden md:flex md:flex-[2] flex-col items-end h-full gap-2 ">
                     <Image src={vinsonImage} alt='image' height={2000} width={2000} className=' rounded-md shadow-md' />
                     <div className='h-[25%]  text-gray-900 w-full  text-center text-[22px] font-dancing flex gap-4 font-bold flex-col justify-center'>
                         <p>Confidence and hard work is the best medicine to kill the disease called failure.</p>

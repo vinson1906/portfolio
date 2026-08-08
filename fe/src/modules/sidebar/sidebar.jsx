@@ -21,8 +21,6 @@ export const SideBarLinks = () => {
                         <Instagram size={40} className="relative left-[-22] top-[320px]  bg-purple-600 rounded-md p-[3px] cursor-pointer" />
                     </Link>
 
-
-
                 </div>
 
             </div>
