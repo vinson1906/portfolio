@@ -26,7 +26,7 @@ const projects = [
       'Modern, responsive portfolio showcasing projects and skills with smooth animations, contact integration, and optimized performance.',
     technologies: ['Next.js', 'Tailwind CSS', 'GSAP', 'Nodemailer'],
     features: ['Smooth animations', 'Contact form', 'Responsive design', 'Performance optimized'],
-    links: { github: 'https://github.com/vinson1906', host: 'https://vinson-portfolio-plum.vercel.app/' },
+    links: { github: 'https://github.com/vinson1906/portfolio', host: 'https://vinson-portfolio-plum.vercel.app/' },
     preview: 'portfolio',
   },
   {
@@ -89,7 +89,7 @@ function ProjectPreview({ type }) {
   return (
     <div className={`${frame} flex bg-[#dddacb] text-[#20251f]`}>
       <div className={`${mono} w-[26%] bg-[#c7d0b5] px-3 py-5 flex flex-col gap-[18px] text-[7px]`}>
-        <b className="font-sans font-bold text-[18px] tracking-[-0.1em] mb-5">atelier</b>
+        <b className="font-sans font-bold text-[18px] tracking-[-0.1em] mb-5">Nikavi</b>
         <span>NEW IN</span>
         <span>COLLECTIONS</span>
         <span>JOURNAL</span>
@@ -99,20 +99,20 @@ function ProjectPreview({ type }) {
           SUMMER / 2026 <b className="float-right">SHOP NOW ↗</b>
         </div>
         <div className="flex items-center justify-around h-[80%]">
-          <div
+          {/* <div
             className="w-[30%] aspect-[0.75] bg-[#b7b397]"
             style={{
               clipPath:
                 'polygon(23% 12%, 38% 0, 62% 0, 77% 12%, 100% 25%, 82% 45%, 73% 35%, 73% 100%, 27% 100%, 27% 35%, 18% 45%, 0 25%)',
             }}
-          />
-          <div>
+          /> */}
+          <div className=" flex flex-col gap-2">
             <small className={`${mono} text-[7px]`}>ESSENTIAL FORM</small>
             <h3 className="text-[clamp(24px,4vw,45px)] leading-[0.85] tracking-[-0.1em] my-[10px_0_20px] font-sans">
               Minimal<br />everyday.
             </h3>
-            <button className="bg-transparent border border-[#20251f] px-[10px] py-[7px] text-[8px]">
-              Explore collection ↗
+            <button className="bg-transparent border border-[#20251f] px-[10px] py-[7px] text-[8px] mt-2">
+              Explore Products ↗
             </button>
           </div>
         </div>
@@ -261,7 +261,7 @@ export default function Page() {
           <a
             className="text-[clamp(35px,5vw,60px)] font-bold tracking-[-0.08em]"
             style={{ color: primary }}
-            href="mailto:hello@vinson.dev"
+            href="mailto:josephvinson0305@gmail.com"
           >
             Let&apos;s talk <span className="ml-1.5">↗</span>
           </a>

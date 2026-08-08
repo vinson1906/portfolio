@@ -100,7 +100,7 @@ function Navbar() {
                             menuLink.map((link, i) => (
                                 <div className="menu-link-item" key={i}>
                                     <div className="menu-link-item-holder " onClick={toggleMenu}>
-                                        <a onClick={link.path == '#project' ? scrollToProject : '' } href={link.path} className='menu-link text-4xl sm:text-5xl md:text-7xl'>{link.lable}</a>
+                                        <a onClick={link.path == '#project' ? scrollToProject : null } href={link.path} className='menu-link text-4xl sm:text-5xl md:text-7xl'>{link.lable}</a>
                                     </div>
                                 </div>
                             ))
