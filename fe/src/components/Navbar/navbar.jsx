@@ -13,10 +13,12 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 gsap.registerPlugin(ScrollToPlugin)
 
 const scrollToProject = (e) => {
-  e.preventDefault()
-  gsap.to(window, { duration: 1.2, scrollTo: { y: '#project', offsetY: 80 }, ease: 'power3.inOut' })
+    e.preventDefault()
+    gsap.to(window, { duration: 1.2, scrollTo: { y: '#project', offsetY: 80 }, ease: 'power3.inOut' })
 }
 
+
+const primary = '#c6ff3d'
 
 function Navbar() {
 
@@ -26,7 +28,7 @@ function Navbar() {
             lable: "Home"
         },
         {
-            path: "#project",
+            path: "/#project",
             lable: "Project"
         },
         {
@@ -76,7 +78,9 @@ function Navbar() {
         <div className='menu-container text-black font-serif ' ref={container}>
             <div className="menu-bar fixed top-0 left-0 w-[100vw] p-6 md:p-[2em] flex justify-between items-center z-10">
                 <div className="menu-logo">
-                    <Link href="/" className=' cursor-pointer text-white'>Vinson</Link>
+                    <a className="text-[28px]  text-white font-extrabold tracking-[-0.12em]" href="/">
+                        V<span style={{ color: primary }}>.</span>
+                    </a>
                 </div>
                 <div className="menu-open" onClick={toggleMenu}>
                     <p className=' cursor-pointer text-white'>Menu</p>
@@ -86,7 +90,9 @@ function Navbar() {
 
                 <div className="menu-overlay-bar flex flex-row md:flex-col justify-between items-center md:items-start w-full md:w-auto md:h-full">
                     <div className="menu-logo">
-                        <Link href="/" className='font-bold uppercase '>Welcome Buddy!</Link>
+                        <a className="text-[28px] font-extrabold tracking-[-0.12em]" href="/">
+                            V<span className='text-red-500 font-bold  '>.</span>
+                        </a>
                     </div>
                     <div className="menu-close md:flex-[4] flex md:h-full items-start" onClick={toggleMenu}>
                         <p className='text-4xl md:text-6xl font-bold md:pl-4 cursor-pointer'>&#x2715;</p>
@@ -100,7 +106,7 @@ function Navbar() {
                             menuLink.map((link, i) => (
                                 <div className="menu-link-item" key={i}>
                                     <div className="menu-link-item-holder " onClick={toggleMenu}>
-                                        <a onClick={link.path == '#project' ? scrollToProject : null } href={link.path} className='menu-link text-4xl sm:text-5xl md:text-7xl'>{link.lable}</a>
+                                        <a onClick={link.path == '#project' ? scrollToProject : null} href={link.path} className='menu-link text-4xl sm:text-5xl md:text-7xl'>{link.lable}</a>
                                     </div>
                                 </div>
                             ))
