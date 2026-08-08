@@ -66,12 +66,12 @@ const Experience = () => {
                   Software Developer Intern
                 </h3>
                 <p className="text-lg text-[#6BF216] dark:text-[#6BF216] font-medium mb-2">
-                  Tech Innovation Company
+                  Venusaur Technologies
                 </p>
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-gray-600 dark:text-gray-300">
                   <div className="flex items-center gap-1">
                     <Calendar className="w-4 h-4" />
-                    <span>May 2025 – present</span>
+                    <span>May 2025 – May 2026</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <MapPin className="w-4 h-4" />
