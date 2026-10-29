@@ -114,7 +114,7 @@ function Navbar() {
                     </div>
                     <div className="menu-info flex flex-col sm:flex-row items-start h-auto md:h-40% md:items-end gap-6 sm:gap-16 md:gap-40 pb-8 md:pb-0">
                         <div className="menu-info-colo flex flex-col">
-                            <a href="https://www.instagram.com/its.__.vinson/" target='_blank' className='block hover:underline cursor-pointer'>Instagram &#8599;</a>
+                            <a href="https://www.instagram.com/iam.__.vinson/" target='_blank' className='block hover:underline cursor-pointer'>Instagram &#8599;</a>
                             <a href="https://www.linkedin.com/in/joseph-vinson-samuel/" target='_blank' className='block hover:underline cursor-pointer'> LinkedIn &#8599;</a>
                             <a href="https://github.com/vinson1906" target='_blank' className='block hover:underline cursor-pointer'>GitHub &#8599;</a>
                         </div>
